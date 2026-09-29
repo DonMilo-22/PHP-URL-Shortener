@@ -56,3 +56,7 @@ This is intentionally small and educational. A public deployment should add rate
 ## 📄 License
 
 MIT.
+
+## 🆕 Recent changes
+
+- Added a one-click **Copy link** button with visual confirmation after a URL is shortened.
