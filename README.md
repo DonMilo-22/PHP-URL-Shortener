@@ -59,4 +59,10 @@ MIT.
 
 ## 🆕 Recent changes
 
+### 2026-10-04
+
+- The generated short-link card now shows the destination domain so users can confirm the link.
+
+### Previous update
+
 - Added a one-click **Copy link** button with visual confirmation after a URL is shortened.
