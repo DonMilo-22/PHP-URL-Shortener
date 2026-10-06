@@ -59,6 +59,12 @@ MIT.
 
 ## 🆕 Recent changes
 
+### 2026-10-05
+
+- Added optional custom aliases so short links can use a memorable code instead of a random one.
+
+### 2026-10-04
+
 ### 2026-10-04
 
 - The generated short-link card now shows the destination domain so users can confirm the link.
