@@ -59,11 +59,13 @@ MIT.
 
 ## 🆕 Recent changes
 
+### 2026-10-06
+
+- The URL and custom alias are now kept in the form after a validation error.
+
 ### 2026-10-05
 
 - Added optional custom aliases so short links can use a memorable code instead of a random one.
-
-### 2026-10-04
 
 ### 2026-10-04
 
