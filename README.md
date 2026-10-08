@@ -59,6 +59,10 @@ MIT.
 
 ## 🆕 Recent changes
 
+### 2026-10-07
+
+- Added a `Shorten another` action that clears the form after creating a link.
+
 ### 2026-10-06
 
 - The URL and custom alias are now kept in the form after a validation error.
