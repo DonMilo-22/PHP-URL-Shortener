@@ -59,6 +59,10 @@ MIT.
 
 ## 🆕 Recent changes
 
+### 2026-10-08
+
+- The result card now shows how many characters were saved by the shortened URL.
+
 ### 2026-10-07
 
 - Added a `Shorten another` action that clears the form after creating a link.
