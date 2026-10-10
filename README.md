@@ -59,6 +59,10 @@ MIT.
 
 ## 🆕 Recent changes
 
+### 2026-10-09
+
+- The result card now displays the generated or custom short code alongside the destination.
+
 ### 2026-10-08
 
 - The result card now shows how many characters were saved by the shortened URL.
