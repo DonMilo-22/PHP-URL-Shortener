@@ -1,88 +1,53 @@
-# ✂️ PHP URL Shortener
+# PHP URL Shortener
 
-> Minimal URL shortener with PHP and SQLite.
+Acortador local de URLs, desarrollado con PHP y SQLite sin framework.
 
-![PHP](https://img.shields.io/badge/PHP-8.1%2B-777BB4?logo=php&logoColor=white)
-![SQLite](https://img.shields.io/badge/SQLite-3-003B57?logo=sqlite)
-![License](https://img.shields.io/badge/license-MIT-green)
+Guarda un código corto y redirige al destino cuando se abre el enlace generado.
 
-A tiny web application that turns long links into short local codes and redirects visitors when those codes are opened.
+## Funciones actuales
 
-## ✨ Features
+- URLs HTTP/HTTPS validadas y persistencia SQLite.
+- Códigos aleatorios con comprobación de colisiones.
+- Alias personalizados únicos de 3 a 24 caracteres: letras, números, `_` o `-`.
+- Tarjeta con alias, dominio de destino y cantidad de caracteres ahorrados.
+- Botón para copiar y acción para iniciar otro acortamiento.
+- Conservación de datos del formulario tras errores de validación.
 
-- Shorten valid HTTP/HTTPS links
-- SQLite persistence
-- Automatic database creation
-- Collision-resistant short codes
-- Redirect endpoint
-- Simple responsive UI
-- No framework required
+## Requisitos
 
-## 🚀 Run locally
+PHP 8.1 o superior, extensión PDO SQLite y permisos de escritura en `data/`.
+
+## Instalación y uso
 
 ```bash
+git clone https://github.com/DonMilo-22/PHP-URL-Shortener.git
+cd PHP-URL-Shortener
 php -S localhost:8000 -t public
 ```
 
-Open `http://localhost:8000`.
+Abre [http://localhost:8000](http://localhost:8000), escribe una URL y opcionalmente un alias. El enlace tendrá la forma `http://localhost:8000/?c=ALIAS`.
 
-## 🧠 How it works
+## Almacenamiento y límites
 
-1. Submit a long URL.
-2. PHP validates it and creates a short random code.
-3. The URL and code are stored in SQLite.
-4. Visiting `/?c=CODE` looks up the target and redirects.
+La base `data/links.sqlite` se crea automáticamente, en una ruta relativa al código del proyecto. Los enlaces locales solo funcionan donde el servidor es accesible. Las redirecciones existentes usan HTTP 302; un código desconocido devuelve 404.
 
-## 🛠️ Requirements
+El servidor integrado de PHP sirve para desarrollo. Una publicación abierta requiere configurar la URL base, protección contra abuso y límites de solicitudes. No hay cuentas, caducidad ni estadísticas de clics. El botón de copiar depende de los permisos y soporte de Clipboard API del navegador.
 
-- PHP 8.1+
-- PDO SQLite extension
+## Comprobaciones
 
-## 🧱 Structure
-
-```text
-public/
-  index.php
-src/
-  Database.php
-data/
-.gitignore
+```bash
+php -l public/index.php
+php -l src/Database.php
 ```
 
-## ⚠️ Production note
+Estos comandos comprueban sintaxis. Revisa manualmente crear un alias, abrirlo y rechazar un alias duplicado.
 
-This is intentionally small and educational. A public deployment should add rate limiting, abuse protection, analytics and a proper base URL configuration.
+## Autor y licencia
 
-## 📄 License
+Desarrollado por [DonMilo-22](https://github.com/DonMilo-22).
 
-MIT.
+Licencia: MIT.
 
-## 🆕 Recent changes
+## Historial
 
-### 2026-10-09
-
-- The result card now displays the generated or custom short code alongside the destination.
-
-### 2026-10-08
-
-- The result card now shows how many characters were saved by the shortened URL.
-
-### 2026-10-07
-
-- Added a `Shorten another` action that clears the form after creating a link.
-
-### 2026-10-06
-
-- The URL and custom alias are now kept in the form after a validation error.
-
-### 2026-10-05
-
-- Added optional custom aliases so short links can use a memorable code instead of a random one.
-
-### 2026-10-04
-
-- The generated short-link card now shows the destination domain so users can confirm the link.
-
-### Previous update
-
-- Added a one-click **Copy link** button with visual confirmation after a URL is shortened.
+Consulta [CHANGELOG.md](CHANGELOG.md) para ver las actualizaciones.
