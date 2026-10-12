@@ -48,6 +48,10 @@ Desarrollado por [DonMilo-22](https://github.com/DonMilo-22).
 
 Licencia: MIT.
 
+## Actualización 2026-10-12
+
+- Added an `Open destination` shortcut beside each newly created short link.
+
 ## Historial
 
 Consulta [CHANGELOG.md](CHANGELOG.md) para ver las actualizaciones.
