@@ -43,9 +43,13 @@ function resetShortener(){
 async function copyShortUrl(){
   const el=document.getElementById("short-url");
   if(!el) return;
-  await navigator.clipboard.writeText(el.href);
   const button=document.querySelector(".copy");
-  if(button){ button.textContent="Copied!"; setTimeout(()=>button.textContent="Copy link",1500); }
+  try {
+    await navigator.clipboard.writeText(el.href);
+    if(button){ button.textContent="Copied!"; setTimeout(()=>button.textContent="Copy link",1500); }
+  } catch {
+    if(button){ button.textContent="Copy unavailable"; setTimeout(()=>button.textContent="Copy link",1800); }
+  }
 }
 </script>
 </body></html>
