@@ -52,6 +52,10 @@ Licencia: MIT.
 
 - Added an `Open destination` shortcut beside each newly created short link.
 
+## Actualización adicional 2026-10-12
+
+- The copy-link action now shows a visible message if clipboard access fails.
+
 ## Historial
 
 Consulta [CHANGELOG.md](CHANGELOG.md) para ver las actualizaciones.
