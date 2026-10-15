@@ -48,7 +48,8 @@ async function copyShortUrl(){
     await navigator.clipboard.writeText(el.href);
     if(button){ button.textContent="Copied!"; setTimeout(()=>button.textContent="Copy link",1500); }
   } catch {
-    if(button){ button.textContent="Copy unavailable"; setTimeout(()=>button.textContent="Copy link",1800); }
+    window.prompt("Clipboard access is unavailable. Copy this short URL manually:", el.href);
+    if(button){ button.textContent="Copy manually"; setTimeout(()=>button.textContent="Copy link",1800); }
   }
 }
 </script>
