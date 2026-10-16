@@ -63,3 +63,7 @@ Consulta [CHANGELOG.md](CHANGELOG.md) para ver las actualizaciones.
 ## Actualización 2026-10-14
 
 - If clipboard access is blocked, the app now opens a manual-copy prompt for the generated short URL.
+
+## Actualización 2026-10-15
+
+- The result panel now displays the generated short URL's length in characters.
