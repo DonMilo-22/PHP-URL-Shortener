@@ -9,7 +9,7 @@ Guarda un código corto y redirige al destino cuando se abre el enlace generado.
 - URLs HTTP/HTTPS validadas y persistencia SQLite.
 - Códigos aleatorios con comprobación de colisiones.
 - Alias personalizados únicos de 3 a 24 caracteres: letras, números, `_` o `-`.
-- Tarjeta con alias, dominio de destino y cantidad de caracteres ahorrados.
+- Tarjeta con alias, dominio de destino, caracteres ahorrados y porcentaje de reducción.
 - Botón para copiar y acción para iniciar otro acortamiento.
 - Conservación de datos del formulario tras errores de validación.
 
@@ -67,3 +67,8 @@ Consulta [CHANGELOG.md](CHANGELOG.md) para ver las actualizaciones.
 ## Actualización 2026-10-15
 
 - The result panel now displays the generated short URL's length in characters.
+
+
+## Actualización 2026-10-16
+
+- The result panel now shows the percentage reduction relative to the original URL length, alongside the number of characters saved.
