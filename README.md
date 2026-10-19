@@ -72,3 +72,8 @@ Consulta [CHANGELOG.md](CHANGELOG.md) para ver las actualizaciones.
 ## Actualización 2026-10-16
 
 - The result panel now shows the percentage reduction relative to the original URL length, alongside the number of characters saved.
+
+
+## New validation: URL length limit
+
+The form and server now limit destination URLs to 2,048 characters. Overlong values are rejected with a clear validation message before a short link is saved.
