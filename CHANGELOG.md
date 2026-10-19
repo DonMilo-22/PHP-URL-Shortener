@@ -1,3 +1,7 @@
+### 2026-10-18
+
+- Added a 2,048-character limit for submitted destination URLs in both the form and server-side validation.
+
 # Historial de cambios
 
 Entradas originales conservadas en inglés. Las fechas corresponden al historial existente; la última entrada no tenía fecha registrada.
