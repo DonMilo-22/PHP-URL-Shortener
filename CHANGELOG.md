@@ -1,3 +1,8 @@
+
+
+### 2026-10-19
+
+- Added optional `src/UrlSafety.php` helper to centralize HTTP/HTTPS URL validation and length checks.
 ### 2026-10-18
 
 - Added a 2,048-character limit for submitted destination URLs in both the form and server-side validation.
