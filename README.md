@@ -77,3 +77,18 @@ Consulta [CHANGELOG.md](CHANGELOG.md) para ver las actualizaciones.
 ## New validation: URL length limit
 
 The form and server now limit destination URLs to 2,048 characters. Overlong values are rejected with a clear validation message before a short link is saved.
+
+
+## New utility: reusable URL validation
+
+The optional `src/UrlSafety.php` class centralizes URL checks for maximum length, a valid host and HTTP/HTTPS schemes:
+
+```php
+require_once __DIR__ . '/../src/UrlSafety.php';
+$error = UrlSafety::validate($url);
+if ($error !== null) {
+    // Display the message and do not save the link.
+}
+```
+
+The existing form validation remains in place; this helper can be reused by other endpoints or tests.
