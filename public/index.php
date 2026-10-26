@@ -9,6 +9,7 @@ if (isset($_GET["c"])) {
 }
 
 $short=null;
+$recentLinks=[];
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
   $url=trim($_POST["url"] ?? "");
   $custom=trim($_POST["code"] ?? "");
@@ -23,9 +24,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $destinationHost = parse_url($url, PHP_URL_HOST);
     $scheme=(!empty($_SERVER["HTTPS"]) && $_SERVER["HTTPS"]!=="off") ? "https" : "http";
     $short=$scheme."://".$_SERVER["HTTP_HOST"]."/?c=".$code;
-    $savedChars=max(0, strlen($url)-strlen($short));\n    $savedPercent = strlen($url) > 0 ? round(($savedChars / strlen($url)) * 100, 1) : 0;
+    $savedChars=max(0, strlen($url)-strlen($short));
+    $savedPercent = strlen($url) > 0 ? round(($savedChars / strlen($url)) * 100, 1) : 0;
   }
 }
+$scheme = (!empty($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] !== "off") ? "https" : "http";
+$recentLinks = $db->recent(5);
 ?>
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PHP URL Shortener</title>
@@ -34,6 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </style></head><body><main class="box"><p>LOCAL • PHP + SQLITE</p><h1>Short links,<br>zero framework.</h1><p>Paste a long address and get a compact local redirect code.</p>
 <form method="post"><input type="url" name="url" maxlength="2048" value="<?=htmlspecialchars($url ?? '', ENT_QUOTES)?>" placeholder="https://example.com/a/very/long/url" required><input name="code" value="<?=htmlspecialchars($custom ?? '', ENT_QUOTES)?>" maxlength="24" pattern="[A-Za-z0-9_-]{3,24}" placeholder="custom-alias (optional)"><button>Shorten</button></form>
 <?php if ($short): ?><div class="result"><strong>Your short URL</strong><br><small>Alias: <?=htmlspecialchars($code ?? "")?> · Destination: <?=htmlspecialchars($destinationHost ?? "")?> · Saved <?=htmlspecialchars((string)($savedChars ?? 0))?> characters (<?=htmlspecialchars((string)($savedPercent ?? 0))?>% shorter) · Short URL length: <?=htmlspecialchars((string)strlen($short))?> chars</small><br><a id="short-url" href="<?=htmlspecialchars($short)?>"><?=htmlspecialchars($short)?></a><br><button class="copy" type="button" onclick="copyShortUrl()">Copy link</button> <button class="copy" type="button" onclick="resetShortener()">Shorten another</button> <a class="copy" href="<?=htmlspecialchars($url ?? '')?>" target="_blank" rel="noopener">Open destination</a></div><?php endif; ?>
+<?php if (!empty($recentLinks)): ?><section class="result"><strong>Recently created links</strong><ul><?php foreach ($recentLinks as $item): ?><li><a href="<?=htmlspecialchars($scheme."://".$_SERVER["HTTP_HOST"]."/?c=".rawurlencode($item["code"]), ENT_QUOTES)?>"><?=htmlspecialchars($item["code"])?></a> · <?=htmlspecialchars(parse_url($item["url"], PHP_URL_HOST) ?: "destination")?> <small>(<?=htmlspecialchars($item["created_at"])?></small></li><?php endforeach; ?></ul></section><?php endif; ?>
 <?php if (isset($error)): ?><div class="error"><?=htmlspecialchars($error)?></div><?php endif; ?>
 </main>
 <script>
