@@ -11,6 +11,11 @@ final class Database {
     $q=$this->pdo->prepare("INSERT INTO links(code,url,created_at) VALUES(:c,:u,:d)");
     $q->execute([":c"=>$code,":u"=>$url,":d"=>date(DATE_ATOM)]);
   }
+  public function recent(int $limit = 5): array {
+    $limit = max(1, min(20, $limit));
+    $q = $this->pdo->query("SELECT code, url, created_at FROM links ORDER BY created_at DESC LIMIT " . $limit);
+    return $q->fetchAll(PDO::FETCH_ASSOC);
+  }
   public function find(string $code): ?string {
     $q=$this->pdo->prepare("SELECT url FROM links WHERE code=:c"); $q->execute([":c"=>$code]);
     $v=$q->fetchColumn(); return $v === false ? null : (string)$v;
