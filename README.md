@@ -92,3 +92,8 @@ if ($error !== null) {
 ```
 
 The existing form validation remains in place; this helper can be reused by other endpoints or tests.
+
+
+## Actualización 2026-10-25
+
+- Added a recent-links panel that lists up to five saved short links with their alias, destination host, and creation timestamp. The database query caps the requested list size to prevent oversized queries. Also repaired a malformed line break in the result calculation.
