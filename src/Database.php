@@ -16,7 +16,10 @@ final class Database {
     $q = $this->pdo->query("SELECT code, url, created_at FROM links ORDER BY created_at DESC LIMIT " . $limit);
     return $q->fetchAll(PDO::FETCH_ASSOC);
   }
-  public function count(): int {\n    return (int)$this->pdo->query("SELECT COUNT(*) FROM links")->fetchColumn();\n  }\n  public function find(string $code): ?string {
+  public function count(): int {
+    return (int)$this->pdo->query("SELECT COUNT(*) FROM links")->fetchColumn();
+  }
+  public function find(string $code): ?string {
     $q=$this->pdo->prepare("SELECT url FROM links WHERE code=:c"); $q->execute([":c"=>$code]);
     $v=$q->fetchColumn(); return $v === false ? null : (string)$v;
   }
